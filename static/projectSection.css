@@ -1,0 +1,55 @@
+#projectSection {
+    min-width: 18em;
+    max-width: 450px;
+    flex: 3;
+
+    overflow: auto;
+    max-height: 1000px;
+    background-color: rgb(249, 250, 251);
+    margin: 10px;
+}
+
+.project {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-content: stretch;
+    height: 10em;
+    margin: 20px 10px;
+}
+
+.projectDescription {
+    display: flex;
+    flex-direction: column;
+    min-width: 5em;
+    margin-right: 10px;
+}
+
+.projectName {
+    font-size: larger;
+}
+
+.projectDetail {
+    font-size: small;
+    overflow: auto;
+    font-weight: 300;
+}
+
+.projectLink {
+    font-size: large;
+    text-decoration: none;
+}
+
+.projectImg {
+    border-radius: 10px;
+    width: 10em;
+    height: 10em;
+    object-fit: cover
+}
+
+@media only screen and (max-width: 650px) {
+    #projectSection {
+        max-width: 4500px;
+        margin: 10px 0;
+    }
+}

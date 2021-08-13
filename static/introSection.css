@@ -1,0 +1,20 @@
+#introSection{
+    flex: 2;
+    min-width: 284px;
+
+    overflow: auto;
+    max-height: 1000px;
+    background-color: rgb(249, 250, 251);
+    margin: 10px;
+}
+
+.introSectionBody{
+    margin: 10px;
+}
+
+@media only screen and (max-width: 650px) {
+
+    #introSection {
+        margin: 10px 0;
+    }
+  }

@@ -4,7 +4,7 @@ const app = express();
 const ip = require('ip')
 
 let local_ipAddress = ip.address()
-let port = 5001
+let port = process.env.PORT || 5001
 
 const connectionString = "mongodb+srv://steve:Yuyu1984@clusterofsteve.k4plc.mongodb.net/"
 
@@ -43,8 +43,8 @@ MongoClient.connect(connectionString)
                 .catch(error => console.error(error))
         })
 
-        app.listen(port, local_ipAddress, () => {
-            console.log(local_ipAddress + ':' + port);
+        app.listen(port, () => {
+            console.log(port);
         })
     })
     .catch(console.error)

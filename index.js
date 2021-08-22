@@ -1,10 +1,8 @@
 const MongoClient = require('mongodb').MongoClient
 const express = require('express')
 const app = express();
-const ip = require('ip')
 
-let local_ipAddress = ip.address()
-let port = process.env.PORT || 5001
+let port = process.env.PORT || 5555
 
 const connectionString = "mongodb+srv://steve:Yuyu1984@clusterofsteve.k4plc.mongodb.net/"
 
@@ -19,12 +17,12 @@ MongoClient.connect(connectionString)
 
         app.use(express.urlencoded({ extended: false }))
         app.use(express.json())
-        app.use(express.static('./static'))
+        app.use(express.static('./public'))
 
         app.get('/data/comments', function (req, res) {
             const findObj = {}
             const sortObj = { timeOfPost: -1 }
-            const limit = 30
+            const limit = 15
             collection.find(findObj).sort(sortObj).limit(limit).toArray()
                 .then(results => {
                     res.send(results)
@@ -38,6 +36,17 @@ MongoClient.connect(connectionString)
             collection.insertOne(req.body)
                 .then(results => {
                     console.log('\nSomeone posted:')
+                    console.log(req.body)
+                })
+                .catch(error => console.error(error))
+        })
+
+        app.delete('/data/comments', (req, res) => {
+
+            let query = req.body
+            collection.deleteOne(query)
+                .then(results => {
+                    console.log('\nSomeone deleted:')
                     console.log(req.body)
                 })
                 .catch(error => console.error(error))
